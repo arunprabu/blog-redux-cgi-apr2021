@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Posts from './components/Posts';
 import About from './components/About';
+import PostDetails from './containers/PostDetails';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
           {/* Configure the routes */}
           <Switch>
             <Route path='/' component={Home} exact/>
-            <Route path='/posts' component={Posts} />
+            <Route path='/posts' component={Posts} exact/>
+            <Route path='/posts/:id' component={PostDetails} />
             <Route path='/about' component={About} />
             {/*  TODO: Learn about 404 */}
           </Switch>

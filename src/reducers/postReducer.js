@@ -23,13 +23,19 @@ const postReducer = (state = [], action) => {
     //This type property describes the event that is taking place 
     //in the application.
 
+  console.log('Inside Posts Reducer');
+
   switch(action.type) {
     case ADD_POST:
-      return state; // not implemented yet 
-    case GET_POSTS: 
-      return state; // not implemented yet
+      let addPostState = [
+        ...state,
+        action.payload
+      ];
+      return addPostState; 
+    case GET_POSTS:
+      return action.payload; 
     case GET_POST_BY_ID: 
-      return state; // not implemented yet
+      return action.post;
     case EDIT_POST:
       return state; // not implemented yet
     case DELETE_POST:

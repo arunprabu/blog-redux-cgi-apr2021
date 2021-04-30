@@ -8,7 +8,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // Step 1: We have to create store first - Setup the the Redux Store app-wide
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux'; // Step 14.2 -- let's use applyMiddleware
 // Step 5:  Setup reducer for the store
 import rootReducer from './reducers'; // and pass this to createStore as an argument.
 // Step 6: inside the ReactDOM.render() block,
@@ -20,8 +20,13 @@ import { Provider } from 'react-redux';
 //that needs to access it without the need to pass props.
 //Provider should be imported from react-redux 
 
+// Step 14.1: Let's setup the middleware 
+import logger from 'redux-logger'; // npm i redux-logger 
+import thunk from 'redux-thunk';  //npm i redux-thunk
+
 // Step 2:
-const store = createStore(rootReducer); //this needs a special argument called 'reducer' 
+const store = createStore(rootReducer, applyMiddleware(thunk, logger) ); //this needs a special argument called 'reducer' 
+// Step 14.3 The above line with applyMiddleware(thunk, logger) 
 
 ReactDOM.render(
   <React.StrictMode>
